@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/Ya-dola/odin-restaurant/issues"
   },
-  "homepage": "https://github.com/Ya-dola/odin-restaurant#readme"
+  "homepage": "https://github.com/Ya-dola/odin-restaurant#readme",
+  "devDependencies": {
+    "webpack": "^5.86.0",
+    "webpack-cli": "^5.1.4"
+  }
 }
