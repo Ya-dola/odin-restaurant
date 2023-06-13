@@ -1,8 +1,5 @@
-function contentDiv() {
-    const divContent = document.createElement('div');
-    divContent.id = 'content';
+const divContent = document.createElement('div');
+divContent.id = 'content';
 
-    return divContent;
-}
 
-document.body.appendChild(contentDiv());
+document.body.appendChild(divContent);

@@ -9,7 +9,8 @@ module.exports = {
     devtool: 'inline-source-map',
     plugins: [
         new HtmlWebpackPlugin({
-                                  title: 'Aadil Odin Restaurant'
+                                  title: 'Aadil Odin Restaurant',
+                                  favicon: "./src/favicon.ico"
                               })
     ],
     output: {
