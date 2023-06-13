@@ -1,0 +1,26 @@
+{
+  "name": "odin-restaurant",
+  "version": "1.0.0",
+  "description": "Restaurant Page for Odin Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ya-dola/odin-restaurant.git"
+  },
+  "keywords": [
+    "Odin",
+    "Project",
+    "Restaurant",
+    "Web",
+    "Dev"
+  ],
+  "author": "Yadola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ya-dola/odin-restaurant/issues"
+  },
+  "homepage": "https://github.com/Ya-dola/odin-restaurant#readme"
+}
