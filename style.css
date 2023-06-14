@@ -78,10 +78,13 @@
 
     --url-logo: url(logo.png);
     --url-menu-bg: url(menu_bg.jpg);
+    --url-contact-us-bg: url(contact_us_bg.jpg);
 
     --icon-default-wh: 2.4rem;
     --icon-header: 6rem;
     --icon-card: 14rem;
+
+    --img-location: 50vw;
 
     --anim-btn: cubic-bezier(1, 0.11, 0.56, 2.05);
 
@@ -93,7 +96,8 @@
     4px 0 6px -2px rgba(0, 0, 0, 0.2);
     --shadow-btn: 0 0 4px 4px rgba(0, 0, 0, 0.1),
     0 4px 4px -2px rgba(0, 0, 0, 0.125);
-    --shadow-modal-blur: 0 0 4px 4px var(--red4);
+    --shadow-blur-home: 0 0 4px 4px var(--red4);
+    --shadow-blur-contact-us: 0 0 4px 4px var(--orange3);
     --shadow-btn-action: 0 0 4px 2px var(--clr-btn-action),
     0 0 6px -2px rgba(0, 0, 0, 0.25);
     --shadow-btn-diff: 0 0 4px 2px var(--clr-btn-diff),
@@ -229,11 +233,11 @@ button:active {
     /*gap: 4rem;*/
 }
 
-.home-back {
+.home-bg {
     background: var(--url-menu-bg) center center / cover no-repeat;
 }
 
-.home {
+.home, .contact-us {
     height: 100%;
     width: 100%;
     display: flex;
@@ -245,17 +249,17 @@ button:active {
     color: var(--txt-light);
 }
 
-.home .blur {
+.blur-card {
     height: min-content;
     width: max-content;
     background-color: var(--bg-modal-blur);
-    box-shadow: var(--shadow-modal-blur);
+    box-shadow: var(--shadow-blur-home);
     font-size: var(--size-menu);
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     gap: 2rem;
-    padding: 2rem 1rem;
+    padding: 3rem 2rem;
     text-align: center;
     border-radius: 2rem;
 }
@@ -303,43 +307,51 @@ button:active {
     gap: 0.5rem;
 }
 
-.input-div {
-    position: relative;
-    width: max(14vw, 12rem);
-    margin-top: 1.4rem;
+.contact-us-bg {
+    background: var(--url-contact-us-bg) center center / cover no-repeat;
 }
 
-.input-div input {
-    width: 100%;
-    padding: 0.4rem 0;
-    font-size: var(--size-form-input);
-    font-family: inherit;
-    border: none;
-    border-bottom: 1px var(--clr-modal-sep) solid;
-    outline: none;
-    background: transparent;
+.contact-us .blur-card {
+    box-shadow: var(--shadow-blur-contact-us);
 }
 
-.input-div label {
-    position: absolute;
-    top: 0;
-    left: 1.75rem;
-    padding: 0.25rem 0;
-    font-size: var(--size-form-label);
-    font-weight: var(--weight-bold);
-    color: var(--clr-input-label);
-    pointer-events: none;
-    transition: all 0.2s ease-in-out;
+.contact-us .info-holder {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 4rem;
 }
 
-.input-div input:focus ~ label,
-.input-div input:valid ~ label {
-    top: -1.75rem;
-    left: 0;
+.info-holder .info {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: var(--size-txt);
+    transition: all 0.1s ease-in-out;
 }
 
-.input-div label.error {
-    color: var(--txt-error);
+.info-holder .info:hover {
+    scale: 1.05;
+}
+
+.info-holder .info:active {
+    scale: 0.96;
+}
+
+.contact-us .location-img {
+    width: var(--img-location);
+    min-width: 50rem;
+    aspect-ratio: 16 / 9;
+    align-self: center;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.contact-us .location-img:active {
+    scale: 0.94;
 }
 
 .footer {
