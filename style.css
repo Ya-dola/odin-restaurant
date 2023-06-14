@@ -29,10 +29,11 @@
     --dark2: #2a2a2a;
     --dark3: #7c8084;
 
-    --background: var(--gray1);
-    --background-header-tile: var(--white2);
-    --background-pic: var(--orange1);
-    --background-sidebar: var(--blue);
+    --bg: var(--gray1);
+    --bg-header-tile: var(--white2);
+    --bg-pic: var(--orange1);
+    --bg-sidebar: var(--blue);
+    --bg-modal-blur: rgba(10, 10, 10, 0.6);
 
     --txt-light: var(--white1);
     --txt-dark1: var(--dark1);
@@ -42,11 +43,12 @@
     --txt-game-tile: var(--dark1);
     --txt-error: var(--red1);
 
-    --clr-btn-action: var(--blue);
+    --clr-btn-action: var(--green3);
     --clr-btn-status: var(--green4);
     --clr-btn-diff: var(--purple2);
     --clr-input-label: var(--gray4);
     --clr-nav-active: var(--red1);
+    --clr-modal-sep: var(--gray4);
     --clr-sb-round: var(--green5);
     --clr-sb-one: var(--orange5);
     --clr-sb-two: var(--yellow1);
@@ -61,8 +63,7 @@
     --size-form-input: 1.5rem;
     --size-footers: 1rem;
     --size-button: 1.4rem;
-    --size-sb-name: 2rem;
-    --size-sb-score: 2.6rem;
+    --size-menu: 1.6rem;
     --size-announcement: 3rem;
 
     --weight-light: 300;
@@ -76,12 +77,13 @@
     --pic-default-wh: 4rem;
 
     --url-logo: url(logo.png);
+    --url-menu-bg: url(menu_bg.jpg);
 
     --icon-default-wh: 2.4rem;
     --icon-big-wh: 3rem;
     --icon-huge-wh: 6rem;
 
-    --anim-tile: cubic-bezier(1, 0.11, 0.56, 2.05);
+    --anim-btn: cubic-bezier(1, 0.11, 0.56, 2.05);
 
     --shadow-header: 0 10px 14px -3px rgba(0, 0, 0, 0.125),
     0 4px 6px -4px rgba(0, 0, 0, 0.1);
@@ -91,6 +93,7 @@
     4px 0 6px -2px rgba(0, 0, 0, 0.2);
     --shadow-btn: 0 0 4px 4px rgba(0, 0, 0, 0.1),
     0 4px 4px -2px rgba(0, 0, 0, 0.125);
+    --shadow-modal-blur: 0 0 4px 4px var(--red4);
     --shadow-btn-action: 0 0 4px 2px var(--clr-btn-action),
     0 0 6px -2px rgba(0, 0, 0, 0.25);
     --shadow-btn-diff: 0 0 4px 2px var(--clr-btn-diff),
@@ -120,7 +123,7 @@ body {
     height: 100vh; /*Forces scrolling on Overflowing Areas*/
     min-width: 100vw;
     width: 100vw; /*Forces scrolling on Overflowing Areas*/
-    background: var(--background);
+    background: var(--bg);
     color: var(--txt-dark2);
     font-family: Lato, sans-serif;
     font-size: var(--size-txt);
@@ -145,22 +148,35 @@ button.link {
     font-size: var(--size-button);
     font-weight: 700;
     padding: 0.75rem 1.2rem;
-    transition-timing-function: var(--anim-tile);
+    transition-timing-function: var(--anim-btn);
 }
 
-button.link:hover {
+button.action {
+    background-color: var(--clr-btn-action);
+    box-shadow: var(--shadow-btn-action);
+    color: var(--txt-light);
+    font-size: var(--size-button);
+    font-weight: 700;
+    padding: 0.8rem 1.6rem;
+    border-radius: 99rem;
+    transition-timing-function: var(--anim-btn);
+}
+
+button:hover {
     scale: 1.125;
+    filter: brightness(96%);
 }
 
-button.link:active {
+button:active {
     scale: 0.98;
+    filter: brightness(84%);
 }
 
 /*Classes*/
 .header {
     grid-area: header;
     padding: 1.5rem 2rem;
-    background-color: var(--background-header-tile);
+    background-color: var(--bg-header-tile);
     box-shadow: var(--shadow-header);
     display: flex;
     flex-flow: row nowrap;
@@ -211,6 +227,77 @@ button.link:active {
     flex-flow: column nowrap;
     align-items: center;
     gap: 4rem;
+}
+
+.menu-back {
+    background: var(--url-menu-bg) center center / cover no-repeat;
+}
+
+.menu {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    color: var(--txt-light);
+}
+
+.menu .blur {
+    height: min-content;
+    width: max-content;
+    background-color: var(--bg-modal-blur);
+    font-size: var(--size-menu);
+    box-shadow: var(--shadow-modal-blur);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    border-radius: 2rem;
+}
+
+
+.input-div {
+    position: relative;
+    width: max(14vw, 12rem);
+    margin-top: 1.4rem;
+}
+
+.input-div input {
+    width: 100%;
+    padding: 0.4rem 0;
+    font-size: var(--size-form-input);
+    font-family: inherit;
+    border: none;
+    border-bottom: 1px var(--clr-modal-sep) solid;
+    outline: none;
+    background: transparent;
+}
+
+.input-div label {
+    position: absolute;
+    top: 0;
+    left: 1.75rem;
+    padding: 0.25rem 0;
+    font-size: var(--size-form-label);
+    font-weight: var(--weight-bold);
+    color: var(--clr-input-label);
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.input-div input:focus ~ label,
+.input-div input:valid ~ label {
+    top: -1.75rem;
+    left: 0;
+}
+
+.input-div label.error {
+    color: var(--txt-error);
 }
 
 .footer {
