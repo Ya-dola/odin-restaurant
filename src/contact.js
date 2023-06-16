@@ -1,4 +1,4 @@
-import locationPng from './location.png';
+import locationPng from './imgs/location.png';
 
 function displayContact() {
     const locationTxt = "62441 Military City Road, Khamis Mushait";

@@ -76,13 +76,13 @@
 
     --pic-default-wh: 4rem;
 
-    --url-logo: url(logo.png);
-    --url-menu-bg: url(menu_bg.jpg);
-    --url-contact-bg: url(contact_us_bg.jpg);
+    --url-logo: url(./imgs/logo.png);
+    --url-menu-bg: url(./imgs/menu_bg.jpg);
+    --url-contact-bg: url(./imgs/contact_us_bg.jpg);
 
     --icon-default-wh: 2.4rem;
     --icon-header: 6rem;
-    --icon-card: 14rem;
+    --icon-card: 10rem;
 
     --img-location: 50vw;
 
@@ -187,6 +187,7 @@ button:active {
     align-items: center;
     justify-content: space-around;
     gap: 4rem;
+    z-index: 10;
 }
 
 .header .left, .header .nav-links {
@@ -227,6 +228,8 @@ button:active {
     grid-area: content;
     overflow: auto; /*Forces scrolling on Overflowing Areas*/
     padding: 2rem;
+    height: 100%;
+    width: 100%;
     /*display: flex;*/
     /*flex-flow: column nowrap;*/
     /*align-items: center;*/
@@ -267,7 +270,7 @@ button:active {
 .menu {
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     grid-auto-rows: 260px;
     padding-bottom: 2rem; /*Add A Gap at the Bottom when Scrolling*/
 }
@@ -278,9 +281,9 @@ button:active {
     border-radius: 0.8rem;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 1.4rem;
-    padding: 0.4rem 1rem;
+    padding: 1rem;
     transition: all 0.1s ease-in-out;
     cursor: pointer;
 }
@@ -294,8 +297,9 @@ button:active {
 }
 
 .card .icon {
-    height: var(--icon-card);
-    aspect-ratio: 1 / 1;
+    width: var(--icon-card);
+    height: 100%;
+    object-fit: scale-down;
     align-self: center;
 }
 

@@ -1,4 +1,6 @@
 import {setActiveNavGroup} from "./header";
+import {resetContent} from "./content";
+import displayMenu from "./menu";
 
 function displayHome() {
     const content = document.getElementById('content');
@@ -31,7 +33,8 @@ function displayHome() {
         const btnMenu = document.getElementById('btnMenu');
 
         setActiveNavGroup(btnMenu);
-        // displayMenu();
+        resetContent();
+        displayMenu();
     });
 
     divHome.appendChild(divBlurCard);

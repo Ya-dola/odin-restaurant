@@ -1,5 +1,6 @@
 import {resetContent} from "./content";
 import displayHome from "./home";
+import displayMenu from "./menu";
 import displayContact from "./contact";
 
 const NAVPAGES = Object.freeze({
@@ -91,7 +92,7 @@ function loadContent(navPage) {
 
     switch (navPage) {
         case NAVPAGES.Menu:
-            // displayMenu();
+            displayMenu();
             break;
         case NAVPAGES.Contact:
             displayContact();
@@ -102,5 +103,12 @@ function loadContent(navPage) {
     }
 }
 
+function defaultLoad() {
+    resetContent();
+
+    setActiveNavGroup(document.getElementById('btnHome'));
+    displayHome();
+}
+
 export default displayHeader;
-export {setActiveNavGroup};
+export {setActiveNavGroup, defaultLoad};
