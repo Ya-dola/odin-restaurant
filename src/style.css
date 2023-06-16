@@ -78,7 +78,7 @@
 
     --url-logo: url(logo.png);
     --url-menu-bg: url(menu_bg.jpg);
-    --url-contact-us-bg: url(contact_us_bg.jpg);
+    --url-contact-bg: url(contact_us_bg.jpg);
 
     --icon-default-wh: 2.4rem;
     --icon-header: 6rem;
@@ -307,8 +307,8 @@ button:active {
     gap: 0.5rem;
 }
 
-.contact-us-bg {
-    background: var(--url-contact-us-bg) center center / cover no-repeat;
+.contact-bg {
+    background: var(--url-contact-bg) center center / cover no-repeat;
 }
 
 .contact-us .blur-card {

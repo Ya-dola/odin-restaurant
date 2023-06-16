@@ -1,7 +1,7 @@
 import './style.css';
-import displayHeader from './header.js';
-import displayContent from "./content.js";
-import displayFooter from "./footer.js";
+import displayHeader from './header';
+import displayContent from "./content";
+import displayFooter from "./footer";
 
 document.body.appendChild(displayHeader());
 document.body.appendChild(displayContent());

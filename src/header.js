@@ -1,4 +1,6 @@
 import {resetContent} from "./content";
+import displayHome from "./home";
+import displayContact from "./contact";
 
 const NAVPAGES = Object.freeze({
                                    Home: {id: 'Home', name: 'Home'},
@@ -88,16 +90,17 @@ function loadContent(navPage) {
     resetContent();
 
     switch (navPage) {
-        case navPage === NAVPAGES.Menu:
+        case NAVPAGES.Menu:
             // displayMenu();
             break;
-        case navPage === NAVPAGES.Contact:
-            // displayContact();
+        case NAVPAGES.Contact:
+            displayContact();
             break;
         default:
-            // displayHome():
+            displayHome();
             break;
     }
 }
 
 export default displayHeader;
+export {setActiveNavGroup};
