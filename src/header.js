@@ -1,3 +1,11 @@
+import {resetContent} from "./content";
+
+const NAVPAGES = Object.freeze({
+                                   Home: {id: 'Home', name: 'Home'},
+                                   Menu: {id: 'Menu', name: 'Menu'},
+                                   Contact: {id: 'Contact', name: 'Contact Us'}
+                               });
+
 const VISIBLEATTR = Object.freeze('visible');
 
 function displayHeader() {
@@ -31,21 +39,21 @@ function displayNavLinks() {
     const navLinks = document.createElement('nav');
     navLinks.classList.add('nav-links');
 
-    navLinks.appendChild(displayNavGroup("Home", "Home"));
-    navLinks.appendChild(displayNavGroup("Menu", "Menu"));
-    navLinks.appendChild(displayNavGroup("Contact Us", "ContactUs"));
+    navLinks.appendChild(displayNavGroup(NAVPAGES.Home));
+    navLinks.appendChild(displayNavGroup(NAVPAGES.Menu));
+    navLinks.appendChild(displayNavGroup(NAVPAGES.Contact));
 
     return navLinks;
 }
 
-function displayNavGroup(linkName, idName) {
+function displayNavGroup(navPage) {
     const navGroup = document.createElement('div');
     navGroup.classList.add('nav-group');
 
     const btnLink = document.createElement('button');
-    btnLink.id = `btn${idName}`;
+    btnLink.id = `btn${navPage.id}`;
     btnLink.classList.add('link');
-    btnLink.textContent = linkName;
+    btnLink.textContent = navPage.name;
 
     // Add Event Listener to Load Accordingly
 
@@ -54,11 +62,11 @@ function displayNavGroup(linkName, idName) {
         if (evt.target.nextElementSibling.classList.contains(VISIBLEATTR)) return;
 
         setActiveNavGroup(btnLink);
-        // loadContent('Category');
+        loadContent(navPage);
     });
 
     const symbol = document.createElement('span');
-    symbol.id = `sym${idName}`;
+    symbol.id = `sym${navPage.id}`;
     symbol.classList.add('active-symbol');
 
     navGroup.appendChild(btnLink);
@@ -74,6 +82,22 @@ function setActiveNavGroup(activeBtn) {
         const btnSymClassList = btn.nextElementSibling.classList;
         btnSymClassList.toggle(VISIBLEATTR, btn === activeBtn && !btnSymClassList.contains(VISIBLEATTR));
     });
+}
+
+function loadContent(navPage) {
+    resetContent();
+
+    switch (navPage) {
+        case navPage === NAVPAGES.Menu:
+            // displayMenu();
+            break;
+        case navPage === NAVPAGES.Contact:
+            // displayContact();
+            break;
+        default:
+            // displayHome():
+            break;
+    }
 }
 
 export default displayHeader;
