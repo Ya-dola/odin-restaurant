@@ -1,3 +1,5 @@
+const VISIBLEATTR = Object.freeze('visible');
+
 function displayHeader() {
     const header = document.createElement('header');
     header.classList.add('header');
@@ -47,6 +49,14 @@ function displayNavGroup(linkName, idName) {
 
     // Add Event Listener to Load Accordingly
 
+    btnLink.addEventListener('click', (evt) => {
+        // Do Nothing if the Btn is already Clicked
+        if (evt.target.nextElementSibling.classList.contains(VISIBLEATTR)) return;
+
+        setActiveNavGroup(btnLink);
+        // loadContent('Category');
+    });
+
     const symbol = document.createElement('span');
     symbol.id = `sym${idName}`;
     symbol.classList.add('active-symbol');
@@ -55,6 +65,15 @@ function displayNavGroup(linkName, idName) {
     navGroup.appendChild(symbol);
 
     return navGroup;
+}
+
+function setActiveNavGroup(activeBtn) {
+    const btns = document.querySelectorAll('.link');
+
+    btns.forEach((btn) => {
+        const btnSymClassList = btn.nextElementSibling.classList;
+        btnSymClassList.toggle(VISIBLEATTR, btn === activeBtn && !btnSymClassList.contains(VISIBLEATTR));
+    });
 }
 
 export default displayHeader;
