@@ -267,6 +267,20 @@ button:active {
     border-radius: 2rem;
 }
 
+.blur-card h1 {
+    overflow-wrap: break-word;
+    font-size: clamp(20px, 4rem, 70px);
+}
+
+.blur-card h2 {
+    overflow-wrap: break-word;
+    font-size: clamp(18px, 4rem, 50px);
+}
+
+.home .blur-card {
+    width: 70%;
+}
+
 .menu {
     display: grid;
     gap: 2rem;
@@ -317,6 +331,7 @@ button:active {
 
 .contact-us .blur-card {
     box-shadow: var(--shadow-blur-contact-us);
+    width: 64%;
 }
 
 .contact-us .info-holder {
@@ -347,7 +362,7 @@ button:active {
 
 .contact-us .location-img {
     width: var(--img-location);
-    min-width: 50rem;
+    min-width: 100%;
     aspect-ratio: 16 / 9;
     align-self: center;
     cursor: pointer;
@@ -370,4 +385,69 @@ button:active {
 .footer a {
     text-decoration: underline;
     color: var(--txt-dark2);
+}
+
+@media (max-width: 700px) {
+    .header {
+        flex-flow: column nowrap;
+        gap: 0.5rem;
+        padding: 1rem 0.5rem;
+        align-items: center;
+    }
+
+    .header .left, .header .nav-links {
+        gap: 0.5rem;
+        align-self: center;
+    }
+
+    .content {
+        padding: 1.4rem;
+    }
+
+    .card:hover {
+        scale: 1.04;
+    }
+
+    .card:active {
+        scale: 0.96;
+    }
+
+    .home, .contact-us {
+        gap: 4rem;
+        padding: 0;
+    }
+
+    .blur-card {
+        max-width: 100%;
+        max-height: 100%;
+        padding: 2rem 0.8rem;
+    }
+
+    .blur-card h1 {
+        overflow-wrap: break-word;
+        font-size: clamp(20px, 4rem, 40px);
+    }
+
+    .blur-card h2 {
+        overflow-wrap: break-word;
+        font-size: clamp(18px, 3rem, 32px);
+    }
+
+    .home .blur-card, .contact-us .blur-card {
+        width: 100%;
+    }
+
+    .contact-us .info-holder {
+        flex-flow: column nowrap;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .contact-us .blur-card {
+        text-align: left;
+    }
+
+    .contact-us .location-img {
+        min-width: 100%;
+    }
 }
